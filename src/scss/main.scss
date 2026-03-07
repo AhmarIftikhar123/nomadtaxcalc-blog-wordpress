@@ -1,0 +1,14 @@
+// src/scss/main.scss
+@use 'abstracts/abstracts' as *;
+@use 'base/base';
+@use 'components/components';
+@use 'layout/layout';
+@use 'pages/pages';
+@use 'themes/themes';
+@use 'vendors/vendors';
+
+body {
+    font-family: $font-family;
+    color: $primary;
+    background-color: $light;
+}

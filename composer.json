@@ -1,0 +1,13 @@
+{
+    "name": "nomadtaxcalc/blocksy-child",
+    "description": "Blocksy Child Theme for NomadTaxCalc",
+    "type": "wordpress-theme",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "NomadTaxCalc\\Theme\\": "Inc/"
+        }
+    }
+}

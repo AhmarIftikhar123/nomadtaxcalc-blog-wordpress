@@ -1,18 +1,22 @@
-import { defineConfig } from 'vite'
-import { resolve } from 'path'
+import { defineConfig } from "vite";
+import { resolve } from "path";
 
 export default defineConfig({
   build: {
-    outDir: 'dist',
+    outDir: "dist",
     rollupOptions: {
+      external: ["jquery"],
       input: {
-        main: resolve(__dirname, 'src/js/main.js'),
-        style: resolve(__dirname, 'src/scss/main.scss'),
+        main: resolve(__dirname, "src/js/main.js"),
+        style: resolve(__dirname, "src/scss/main.scss"),
       },
       output: {
-        assetFileNames: 'css/[name][extname]',
-        entryFileNames: 'js/[name].js',
-      }
+        globals: {
+          jquery: "jQuery",
+        },
+        assetFileNames: "css/[name][extname]",
+        entryFileNames: "js/[name].js",
+      },
     },
     // Disable hashing for easy WordPress enqueuing
     cssCodeSplit: true,
@@ -21,8 +25,8 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         // Global SCSS variables available everywhere
-        additionalData: `@use "./src/scss/abstracts/abstracts-helpers/variables" as *;`
-      }
-    }
-  }
-})
+        additionalData: `@use "./src/scss/abstracts/abstracts-helpers/variables" as *;`,
+      },
+    },
+  },
+});

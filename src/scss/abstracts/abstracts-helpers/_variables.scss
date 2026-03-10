@@ -6,3 +6,11 @@ $gray: #737578 !default;
 $border-gray: #e0e0e1 !default;
 
 $font-family: 'Clash Grotesk', sans-serif !default;
+
+$breakpoints: (
+  sm: 640px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  '2xl': 1536px
+) !default;

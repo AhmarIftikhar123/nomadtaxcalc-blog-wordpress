@@ -1,0 +1,178 @@
+@use '../../abstracts/abstracts-helpers/variables' as *;
+
+/* ============================================================
+   Table of Contents — _toc.scss
+   ============================================================ */
+
+:root {
+  --toc-bg:           #{$light};
+  --toc-border:       #{$border-gray};
+  --toc-radius:       14px;
+  --toc-title-color:  #{$gray};
+  --toc-num-color:    #{$border-gray}; // Or another muted color from variables
+  --toc-text-color:   #374151;
+  --toc-text-hover:   #{$dark};
+  --toc-active-bg:    #{$dark};
+  --toc-active-text:  #{$light};
+  --toc-active-num:   rgba(255,255,255,0.5);
+  --toc-h3-indent:    20px;
+  --toc-font:         #{$font-family};
+  --toc-ease:         cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Sticky wrapper ── */
+.ntc-toc {
+  position: sticky;
+  top: 90px; /* height of your nav + some gap */
+  width: 100%;
+  max-width: 320px;
+  background: var(--toc-bg);
+  border: 1px solid var(--toc-border);
+  border-radius: var(--toc-radius);
+  padding: 18px;
+  font-family: var(--toc-font);
+  -webkit-font-smoothing: antialiased;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--toc-border) transparent;
+}
+
+.ntc-toc::-webkit-scrollbar       { width: 4px; }
+.ntc-toc::-webkit-scrollbar-track { background: transparent; }
+.ntc-toc::-webkit-scrollbar-thumb { background: var(--toc-border); border-radius: 4px; }
+
+/* ── Header row ── */
+.ntc-toc__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--toc-border);
+}
+
+.ntc-toc__header svg {
+  width: 15px;
+  height: 15px;
+  stroke: var(--toc-title-color);
+  flex-shrink: 0;
+}
+
+.ntc-toc__header span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--toc-title-color);
+}
+
+/* ── List ── */
+.ntc-toc__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ── Each item ── */
+.ntc-toc__item {
+  border-radius: 9px;
+  overflow: hidden;
+  transition: background 0.18s var(--toc-ease);
+}
+
+/* H3 items are indented */
+.ntc-toc__item--h3 .ntc-toc__link {
+  padding-left: calc(14px + var(--toc-h3-indent));
+}
+
+.ntc-toc__item--h3 .ntc-toc__num {
+  opacity: 0.6;
+  font-size: 0.65rem;
+}
+
+/* ── Link ── */
+.ntc-toc__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px 8px 14px;
+  text-decoration: none;
+  border-radius: 9px;
+  transition:
+    background 0.18s var(--toc-ease),
+    color 0.18s var(--toc-ease);
+}
+
+.ntc-toc__link:hover {
+  background: #f3f5f8;
+}
+
+.ntc-toc__link:hover .ntc-toc__text {
+  color: var(--toc-text-hover);
+}
+
+/* ── Number badge ── */
+.ntc-toc__num {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--toc-num-color);
+  min-width: 20px;
+  font-variant-numeric: tabular-nums;
+  transition: color 0.18s;
+}
+
+/* ── Text ── */
+.ntc-toc__text {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--toc-text-color);
+  line-height: 1.4;
+  transition: color 0.18s;
+}
+
+/* ══ ACTIVE STATE (set by JS on scroll) ══ */
+.ntc-toc__link.is-active {
+  background: var(--toc-active-bg);
+}
+
+.ntc-toc__link.is-active .ntc-toc__num {
+  color: var(--toc-active-num);
+}
+
+.ntc-toc__link.is-active .ntc-toc__text {
+  color: var(--toc-active-text);
+  font-weight: 600;
+}
+
+/* ── Sidebar layout wrapper ──
+   Use this class on the <div> wrapping your post content + TOC
+   in your single.php template */
+.ntc-post-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 40px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.ntc-post-layout__content {
+  min-width: 0; /* prevent overflow */
+}
+
+/* ── Responsive: hide TOC on small screens ── */
+@media (max-width: 1024px) {
+  .ntc-post-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ntc-post-layout__sidebar {
+    display: none;
+  }
+}

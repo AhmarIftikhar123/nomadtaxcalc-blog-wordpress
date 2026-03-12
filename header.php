@@ -41,3 +41,4 @@
             do_action('blocksy:content:top');
             blocksy_before_current_template();
         ?>
+        

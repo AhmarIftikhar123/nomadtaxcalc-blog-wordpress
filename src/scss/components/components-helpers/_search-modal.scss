@@ -1,0 +1,98 @@
+@use '../../abstracts/abstracts' as abs;
+
+.ct-panel {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 999999;
+    inset: var(--admin-bar, 0px) 0 0 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+    background: rgba(abs.$light, 0.98);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+
+    &.is-active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+        display: flex;
+    }
+
+    .ct-panel-actions {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+
+        .ct-toggle-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            transition: transform 0.2s ease;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
+            svg {
+                display: block;
+                color: abs.$dark;
+                fill: abs.$dark;
+            }
+        }
+    }
+
+    .ct-panel-content {
+        width: 100%;
+        max-width: 600px;
+        padding: 40px 20px;
+
+        .ct-search-form {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            input[type="search"] {
+                width: 100%;
+                border: none;
+                border-bottom: 2px solid abs.$dark;
+                padding: 15px 50px 15px 0;
+                font-size: 2rem;
+                font-family: abs.$font-family;
+                background: transparent;
+                outline: none;
+                color: abs.$dark;
+
+                &::placeholder {
+                    color: abs.$gray;
+                }
+            }
+
+            .ct-search-form-controls {
+                position: absolute;
+                right: 0;
+
+                button[type="submit"] {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    padding: 10px;
+                    color: abs.$dark;
+
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ct-icon.ct-search-button-content {
+    width: 1.5rem;
+    height: 1rem;
+}

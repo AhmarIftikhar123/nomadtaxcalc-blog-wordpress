@@ -64,3 +64,5 @@ src/
 
 Using Vite for build process.
 Composer for auto loading.
+
+Everytime U add a feature add the respective files always as question needs to add the respective file in /docs dir how to use this feature when planing the feature.

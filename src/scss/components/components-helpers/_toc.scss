@@ -176,3 +176,9 @@
     display: none;
   }
 }
+/* ── Responsive: sticky TOC on larger screens ── */
+@media(min-width: 1000px) {
+    :is(.ct-sidebar[data-sticky=sidebar],.ct-sticky-widgets) {
+        top: calc(var(--sidebar-offset, 90px) + var(--admin-bar, 0px) + var(--theme-frame-size, 0px) + var(--header-sticky-height, 0px)*var(--sticky-shrink, 100)/100) !important;
+    }
+}

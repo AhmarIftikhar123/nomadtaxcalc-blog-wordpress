@@ -6,6 +6,7 @@ use NomadTaxCalc\Theme\Traits\Singleton;
 use NomadTaxCalc\Theme\Classes\MegaMenu\MegaMenuSetup;
 use NomadTaxCalc\Theme\Classes\Media\SvgSupport;
 use NomadTaxCalc\Theme\Classes\Toc\TableOfContents;
+use NomadTaxCalc\Theme\Classes\Features\ReadingProgressBar;
 
 class Theme
 {
@@ -17,6 +18,7 @@ class Theme
         MegaMenuSetup::getInstance();
         SvgSupport::getInstance();
         TableOfContents::getInstance();
+        ReadingProgressBar::getInstance();
     }
 
     protected function setup_hooks()

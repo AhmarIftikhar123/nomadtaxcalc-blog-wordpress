@@ -9,12 +9,12 @@
   --toc-border:       #{$border-gray};
   --toc-radius:       14px;
   --toc-title-color:  #{$gray};
-  --toc-num-color:    #{$border-gray}; // Or another muted color from variables
+  --toc-num-color:    #{$neutral-gray}; // Or another muted color from variables
   --toc-text-color:   #374151;
   --toc-text-hover:   #{$dark};
   --toc-active-bg:    #{$dark};
   --toc-active-text:  #{$light};
-  --toc-active-num:   rgba(255,255,255,0.5);
+  --toc-active-num:   rgba(255, 255, 255, 0.65);
   --toc-h3-indent:    20px;
   --toc-font:         #{$font-family};
   --toc-ease:         cubic-bezier(0.22, 1, 0.36, 1);

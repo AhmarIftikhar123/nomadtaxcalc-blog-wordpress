@@ -21,7 +21,7 @@
     <?php wp_head(); ?>
     <?php do_action('blocksy:head:end') ?>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DVX09P1VSB"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7QDDRHQW41"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -30,7 +30,7 @@
         }
         gtag('js', new Date());
 
-        gtag('config', 'G-DVX09P1VSB');
+        gtag('config', 'G-7QDDRHQW41');
     </script>
 </head>
 
